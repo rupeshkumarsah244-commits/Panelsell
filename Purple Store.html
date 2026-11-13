@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Purple Store</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#110c1a;--hi:#211836;--lo:#06030b;--p:#a855f7;--p2:#7c3aed;--tx:#efe9fb;--mut:#9b90b8;--lt:#d8b4fe;--glow:0 0 18px rgba(168,85,247,.6);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;color:var(--tx);font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:radial-gradient(circle at 10% -5%,rgba(124,58,237,.3),transparent 45%),radial-gradient(circle at 100% 35%,rgba(168,85,247,.14),transparent 40%),var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);padding:12px 16px 8px;box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:0 auto}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:.5px;color:#fff;text-shadow:0 0 10px var(--p),0 0 28px var(--p2)}
+.wal{padding:8px 16px;border-radius:14px;font-weight:600;font-size:.9rem;color:var(--lt);cursor:pointer;text-shadow:var(--glow)}
+nav{display:flex;gap:12px;overflow-x:auto;padding:14px 6px 10px;scrollbar-width:none;max-width:1100px;margin:0 auto}
+nav::-webkit-scrollbar{display:none}
+.nu{background:var(--bg);border-radius:20px;box-shadow:7px 7px 16px var(--lo),-7px -7px 16px var(--hi)}
+.in{box-shadow:inset 4px 4px 9px var(--lo),inset -4px -4px 9px var(--hi)}
+button{font:inherit;color:var(--tx);border:0;cursor:pointer;background:var(--bg);border-radius:14px;padding:10px 18px;white-space:nowrap;box-shadow:5px 5px 11px var(--lo),-5px -5px 11px var(--hi);transition:box-shadow .2s,color .2s}
+button:active,button.on{box-shadow:inset 3px 3px 7px var(--lo),inset -3px -3px 7px var(--hi)}
+nav button.on{color:var(--lt);text-shadow:var(--glow)}
+.pri{background:linear-gradient(135deg,var(--p2),var(--p));color:#fff;font-weight:600;box-shadow:0 0 18px rgba(168,85,247,.55),4px 4px 10px var(--lo)}
+.pri:active{box-shadow:0 0 8px rgba(168,85,247,.5),inset 2px 2px 6px rgba(0,0,0,.35)}
+main{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+h2{margin:0 0 16px;font-size:1.3rem;text-shadow:0 0 14px rgba(168,85,247,.6)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.card{padding:14px}
+.media{width:100%;aspect-ratio:16/10;border-radius:16px;object-fit:cover;display:grid;place-items:center;font-size:2.6rem;background:linear-gradient(135deg,#1b1330,#2c1a55)}
+img.media,video.media{display:block;background:#000}
+.card h3{margin:14px 4px 2px;font-size:1.05rem}
+.sub{color:var(--mut);font-size:.8rem;margin:0 4px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:10px;margin:12px 0 16px}
+.plan{padding:9px 6px;text-align:center;line-height:1.3;font-size:.8rem}
+.plan b{display:block;font-weight:600}
+.plan span{color:var(--lt);font-weight:800;font-size:.95rem}
+.plan s{display:block;color:var(--mut);font-size:.72rem}
+.plan.on{box-shadow:inset 3px 3px 7px var(--lo),inset -3px -3px 7px var(--hi),0 0 14px rgba(168,85,247,.55);outline:1px solid rgba(168,85,247,.6)}
+input,textarea,select{display:block;width:100%;font:inherit;color:var(--tx);background:var(--bg);border:0;outline:0;border-radius:14px;padding:13px 15px;margin:6px 0 14px;box-shadow:inset 4px 4px 9px var(--lo),inset -4px -4px 9px var(--hi)}
+input:focus,textarea:focus,select:focus{box-shadow:inset 4px 4px 9px var(--lo),inset -4px -4px 9px var(--hi),0 0 0 2px rgba(168,85,247,.55),var(--glow)}
+label{font-size:.85rem;color:var(--mut)}
+.box{max-width:480px;margin:0 auto;padding:22px}
+.box+.box{margin-top:24px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.qr{display:grid;place-items:center;width:230px;height:230px;margin:16px auto;border-radius:20px;padding:12px;text-align:center;color:var(--mut);font-size:.85rem}
+.qr img{width:100%;height:100%;object-fit:contain;border-radius:12px;background:#fff}
+.stars{margin:6px 0 14px}
+.stars button{padding:6px 11px;font-size:1.3rem;color:var(--mut);margin-right:6px}
+.stars button.on{color:#e9b4ff;text-shadow:var(--glow)}
+.fb{padding:14px;margin-bottom:18px}
+.ar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;font-size:.9rem}
+.ar small{color:var(--mut)}
+.hide{display:none!important}
+#tt{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;padding:12px 20px;z-index:40;transition:.3s;text-align:center;max-width:90%;color:var(--lt)}
+#tt.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="logo">PURPLE STORE</div><div class="wal nu in" id="wal">₹0</div></div>
+ <nav id="nav"></nav>
+</header>
+<main>
+ <section id="v-shop"><div class="card nu" id="rsc" style="margin-bottom:26px"></div><h2>Products</h2><div class="grid" id="grid"></div></section>
+
+ <section id="v-wallet" class="hide"><div class="box nu">
+  <h2>Add Money</h2>
+  <label>Amount (₹)</label>
+  <input id="amt" type="number" inputmode="numeric" min="1" placeholder="Jaise 100">
+  <div class="row" id="quick"></div>
+  <button class="pri" id="gen" style="width:100%;margin-top:16px">QR Generate Karo</button>
+  <div id="payb" class="hide">
+   <div class="qr nu in" id="qr"></div>
+   <p style="text-align:center;margin-top:0">Scan karke <b id="pa" style="color:var(--lt)"></b> pay karo</p>
+   <label>UTR / Reference No. (UPI app ke payment details mein milta hai)</label>
+   <input id="utr" inputmode="numeric" maxlength="12" placeholder="12 digit UTR number">
+   <button class="pri" id="paid" style="width:100%">Maine Pay Kar Diya</button>
+  </div>
+ </div></section>
+
+ <section id="v-keys" class="hide"><div class="box nu"><h2>My Keys</h2><div id="kl"></div></div></section>
+
+ <section id="v-feedback" class="hide">
+  <div class="box nu">
+   <h2>Feedback</h2>
+   <label>Naam (optional)</label><input id="fn" maxlength="30">
+   <label>Rating</label><div class="stars" id="stars"></div>
+   <label>Aapka message</label><textarea id="ft" rows="4" maxlength="400"></textarea>
+   <button class="pri" id="fs" style="width:100%">Feedback Bhejo</button>
+  </div>
+  <div id="fl" style="max-width:480px;margin:26px auto 0"></div>
+ </section>
+
+ <section id="v-admin" class="hide">
+  <div class="box nu" id="login">
+   <h2>Admin Login</h2>
+   <input id="pw" type="password" placeholder="Password">
+   <button class="pri" id="lg" style="width:100%">Login</button>
+  </div>
+  <div id="panel" class="hide" style="max-width:480px;margin:0 auto">
+   <div class="box nu">
+    <h2>Naya Product</h2>
+    <label>Product ka naam</label><input id="an">
+    <label>Details (optional)</label><input id="ad">
+    <label>Plans: har line mein duration = price</label>
+    <textarea id="ap" rows="4" placeholder="12 Hours = 49&#10;1 Day = 99&#10;3 Days = 249"></textarea>
+    <label>Photo ya Video</label><input id="af" type="file" accept="image/*,video/*">
+    <button class="pri" id="add" style="width:100%">Product Add Karo</button>
+   </div>
+   <div class="box nu">
+    <h2>Payment QR</h2>
+    <div class="qr nu in" id="aq" style="margin-top:0"></div>
+    <input id="aqf" type="file" accept="image/*">
+   </div>
+   <div class="box nu">
+    <h2>UPI ID (QR generator)</h2>
+    <input id="upi" placeholder="name@bank">
+    <button class="pri" id="upis" style="width:100%">UPI ID Save Karo</button>
+   </div>
+   <div class="box nu">
+    <h2>Key Stock</h2>
+    <select id="ks"></select>
+    <textarea id="kt" rows="3" placeholder="Har line mein ek key"></textarea>
+    <div class="row"><button class="pri" id="ka">Keys Add Karo</button><button id="kg">10 Keys Generate</button></div>
+   </div>
+   <div class="box nu"><h2>Products</h2><div id="alist"></div></div>
+   <div class="box nu"><h2>Logs</h2><div id="alog" style="font-size:.8rem;color:var(--mut)"></div></div>
+   <div class="box nu"><h2>Add Money Requests</h2><div id="areq"></div></div>
+   <div class="box nu"><h2>Orders</h2><div id="aord"></div></div>
+   <button id="lo" style="display:block;margin:24px auto 0">Logout</button>
+  </div>
+ </section>
+</main>
+<div id="tt" class="nu"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const ADMIN_PASS='admin123'; // yahan apna password badlo
+const RES_PRICE=299,RES_OFF=30; // reseller plan ka price aur discount %
+const UPI='8298664073@fam'; // default UPI ID, admin panel se badal sakte ho
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mem={};
+const ls={get(k,d){if(k in mem)return mem[k];try{const v=localStorage.getItem(k);if(v)return mem[k]=JSON.parse(v)}catch(e){}return d},set(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const db=()=>new Promise((ok,no)=>{const r=indexedDB.open('ps',1);r.onupgradeneeded=()=>r.result.createObjectStore('m');r.onsuccess=()=>ok(r.result);r.onerror=()=>no()});
+const mset=async(k,v)=>{mem['m'+k]=v;try{(await db()).transaction('m','readwrite').objectStore('m').put(v,k)}catch(e){}};
+const mdel=async k=>{delete mem['m'+k];try{(await db()).transaction('m','readwrite').objectStore('m').delete(k)}catch(e){}};
+const mget=async k=>{if('m'+k in mem)return mem['m'+k];try{const d=await db();return await new Promise(ok=>{const q=d.transaction('m').objectStore('m').get(k);q.onsuccess=()=>ok(q.result||null);q.onerror=()=>ok(null)})}catch(e){return null}};
+const rd=f=>new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result);r.readAsDataURL(f)});
+const shrink=(f,m)=>new Promise(ok=>{const i=new Image();i.onload=()=>{const s=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas'),x=c.getContext('2d');c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.85))};i.onerror=()=>rd(f).then(ok);rd(f).then(u=>i.src=u)});
+let tm;const toast=m=>{const t=$('#tt');t.textContent=m;t.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>t.classList.remove('show'),2800)};
+
+const logx=m=>{const l=ls.get('ps_log',[]);l.unshift({m:String(m).slice(0,140),t:Date.now()});ls.set('ps_log',l.slice(0,40))};
+addEventListener('error',e=>logx('Error: '+e.message));
+addEventListener('unhandledrejection',e=>logx('Error: '+e.reason));
+const lim=(k,n,ms)=>{const t=Date.now(),a=ls.get('rl_'+k,[]).filter(x=>t-x<ms);if(a.length>=n)return false;a.push(t);ls.set('rl_'+k,a);return true};
+const mk=n=>Array.from({length:n},()=>'PS-'+Array.from(crypto.getRandomValues(new Uint8Array(6)),b=>b.toString(36).padStart(2,'0')).join('').toUpperCase().match(/.{1,4}/g).join('-'));
+const seed=[
+ {id:1,n:'Starter Key',d:'Chhota aur sasta plan',pl:[['12 Hours',49],['1 Day',99],['3 Days',249]],t:''},
+ {id:2,n:'Pro Key',d:'Fast aur stable access',pl:[['12 Hours',79],['1 Day',149],['3 Days',349]],t:''},
+ {id:3,n:'Ultra Key',d:'Full premium access',pl:[['1 Day',199],['3 Days',449],['7 Days',899]],t:''}];
+let P=ls.get('ps_prod',seed),W=ls.get('ps_wal',0),RS=ls.get('ps_res',false),sel={},adm=false,cur=0,rt=0;
+const pr=x=>RS?Math.round(x*(100-RES_OFF)/100):x;
+if(!ls.get('ps_stock',0)){const s={};seed.forEach(p=>p.pl.forEach(x=>s[p.id+'|'+x[0]]=mk(5)));ls.set('ps_stock',s)}
+const bal=()=>{$('#wal').textContent='₹'+Number(W).toLocaleString('en-IN')};
+
+/* views */
+const V=[['shop','Shop'],['wallet','Add Money'],['keys','My Keys'],['feedback','Feedback'],['admin','Admin']];
+$('#nav').innerHTML=V.map(v=>`<button data-v="${v[0]}">${v[1]}</button>`).join('');
+const go=v=>{try{location.hash=v}catch(e){}view(v)};
+function view(v){v=v||location.hash.slice(1);if(!V.some(x=>x[0]==v))v='shop';
+ V.forEach(x=>$('#v-'+x[0]).classList.toggle('hide',x[0]!=v));
+ document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v==v));
+ $('#login').classList.toggle('hide',adm);$('#panel').classList.toggle('hide',!adm);
+ if(v=='feedback')fbl();if(v=='keys')kls();if(v=='admin'&&adm)admin();badge();scrollTo(0,0)}
+addEventListener('hashchange',()=>view());
+$('#nav').onclick=e=>{const v=e.target.dataset.v;if(v)go(v)};
+$('#wal').onclick=()=>go('wallet');
+
+/* shop */
+async function shop(){
+ $('#rsc').innerHTML=RS?`<b style="color:var(--lt)">Reseller active</b><div class="sub" style="margin:2px 0 0">Sabhi keys par ${RES_OFF}% discount lag raha hai</div>`:`<h3 style="margin-top:2px">Reseller Plan</h3><div class="sub">Lo aur sabhi keys par ${RES_OFF}% discount pao</div><button class="pri" id="rsb" style="width:100%;margin-top:12px">₹${RES_PRICE} mein Reseller Bano</button>`;
+ $('#grid').innerHTML=P.length?P.map(p=>`<div class="card nu" data-id="${p.id}"><div class="media in" id="m${p.id}">${p.t?'':'💜'}</div><h3>${esc(p.n)}</h3><div class="sub">${esc(p.d||'')}</div><div class="plans">${p.pl.map((x,i)=>`<button class="plan${(sel[p.id]||0)==i?' on':''}" data-i="${i}"><b>${esc(x[0])}</b>${RS?`<s>₹${x[1]}</s>`:''}<span>₹${pr(x[1])}</span></button>`).join('')}</div><button class="pri buy" style="width:100%">Buy Now</button></div>`).join(''):'<p>Abhi koi product nahi hai.</p>';
+ for(const p of P)if(p.t){const u=await mget('p'+p.id),e=$('#m'+p.id);if(u&&e)e.outerHTML=p.t=='v'?`<video class="media" src="${u}" controls playsinline loop></video>`:`<img class="media" src="${u}" alt="">`}
+}
+$('#grid').onclick=e=>{const c=e.target.closest('.card');if(!c)return;const id=+c.dataset.id,p=P.find(x=>x.id==id),pl=e.target.closest('.plan');
+ if(pl){sel[id]=+pl.dataset.i;c.querySelectorAll('.plan').forEach(b=>b.classList.toggle('on',b==pl))}
+ else if(e.target.closest('.buy'))buy(p,p.pl[sel[id]||0])};
+const kls=()=>{$('#kl').innerHTML=ls.get('ps_ord',[]).filter(o=>o.k).map(o=>`<div class="ar"><span>${esc(o.n)} / ${esc(o.d)}<br><b style="color:var(--lt);user-select:all">${esc(o.k)}</b></span></div>`).join('')||'Abhi koi key nahi'};
+const badge=()=>{const n=ls.get('ps_req',[]).filter(r=>!r.s).length;$('[data-v=admin]').textContent='Admin'+(n?' ('+n+')':'')};
+function buy(p,x){
+ const c=pr(x[1]),k=p.id+'|'+x[0],st=ls.get('ps_stock',{}),ks=st[k]||[];
+ if(!lim('buy',6,60000))return toast('Bahut tez, thoda ruko');
+ if(W<c){toast('Balance kam hai, pehle Add Money karo');go('wallet');$('#amt').value=Math.ceil(c-W);return}
+ if(!ks.length)return toast('Is plan ki keys abhi stock mein nahi hain');
+ const key=ks.shift();st[k]=ks;ls.set('ps_stock',st);
+ W-=c;ls.set('ps_wal',W);bal();
+ const o=ls.get('ps_ord',[]);o.unshift({n:p.n,d:x[0],p:c,k:key,t:Date.now()});ls.set('ps_ord',o);
+ logx('Order: '+p.n+' / '+x[0]);toast('Order ho gaya, key My Keys mein hai');go('keys')}
+$('#rsc').onclick=e=>{if(e.target.id!='rsb')return;
+ if(W<RES_PRICE){toast('Balance kam hai, pehle Add Money karo');go('wallet');$('#amt').value=Math.ceil(RES_PRICE-W);return}
+ W-=RES_PRICE;RS=true;ls.set('ps_wal',W);ls.set('ps_res',true);bal();logx('Reseller plan liya');toast('Reseller ban gaye, sabhi keys par '+RES_OFF+'% off');shop()};
+
+/* add money */
+$('#quick').innerHTML=[50,100,200,500].map(a=>`<button data-a="${a}">₹${a}</button>`).join('');
+$('#quick').onclick=e=>{const a=e.target.dataset.a;if(a)$('#amt').value=a};
+$('#gen').onclick=async()=>{const a=+$('#amt').value;if(!(a>0))return toast('Pehle amount daalo');
+ const u=ls.get('ps_upi','')||UPI,q=await mget('qr'),el=$('#qr');el.innerHTML='';
+ if(u&&typeof QRCode!='undefined')new QRCode(el,{text:'upi://pay?pa='+u+'&pn='+encodeURIComponent('Purple Store')+'&am='+a+'&cu=INR',width:200,height:200,correctLevel:QRCode.CorrectLevel.M});
+ else el.innerHTML=q?`<img src="${q}" alt="QR">`:'QR abhi set nahi hai.<br>Admin panel mein apni UPI ID daalo.';
+ $('#pa').textContent='₹'+a;cur=a;$('#payb').classList.remove('hide')};
+$('#paid').onclick=()=>{if(!lim('req',3,60000))return toast('Bahut requests, thoda ruko');const u=$('#utr').value.trim(),r=ls.get('ps_req',[]);if(!/^\d{12}$/.test(u))return toast('12 digit ka UTR number daalo');if(r.some(x=>x.u==u))return toast('Ye UTR pehle use ho chuka hai');r.unshift({a:cur,u,t:Date.now(),s:0});ls.set('ps_req',r);$('#utr').value='';
+ $('#payb').classList.add('hide');$('#amt').value='';toast('Request bhej di, admin approve karega to balance add hoga')};
+
+/* feedback */
+$('#stars').innerHTML=[1,2,3,4,5].map(i=>`<button data-r="${i}">★</button>`).join('');
+const stars=()=>document.querySelectorAll('#stars button').forEach((b,i)=>b.classList.toggle('on',i<rt));
+$('#stars').onclick=e=>{const r=+e.target.dataset.r;if(r){rt=r;stars()}};
+$('#fs').onclick=()=>{const t=$('#ft').value.trim();if(!rt||!t)return toast('Rating aur message dono daalo');if(!lim('fb',2,60000))return toast('Thoda ruko, 1 minute baad dobara bhejo');
+ const f=ls.get('ps_fb',[]);f.unshift({n:$('#fn').value.trim()||'Guest',r:rt,m:t,t:Date.now()});ls.set('ps_fb',f);
+ $('#ft').value='';$('#fn').value='';rt=0;stars();toast('Shukriya, feedback mil gaya');fbl()};
+function fbl(){$('#fl').innerHTML=ls.get('ps_fb',[]).slice(0,30).map(f=>`<div class="fb nu"><b>${esc(f.n)}</b> <span style="color:var(--lt)">${'★'.repeat(f.r)}</span><div style="margin-top:6px;font-size:.9rem">${esc(f.m)}</div></div>`).join('')}
+
+/* admin */
+$('#lg').onclick=()=>{if(!lim('login',5,60000))return toast('Bahut attempts, 1 minute baad try karo');if($('#pw').value===ADMIN_PASS){adm=true;$('#pw').value='';logx('Admin login');view('admin')}else{logx('Galat admin password');toast('Galat password')}};
+$('#lo').onclick=()=>{adm=false;view('admin')};
+function admin(){
+ $('#alist').innerHTML=P.map(p=>`<div class="ar"><span>${esc(p.n)}<br><small>${p.pl.map(x=>esc(x[0])+' ₹'+x[1]).join(' · ')}</small></span><button data-del="${p.id}">Delete</button></div>`).join('')||'Koi product nahi';
+ $('#areq').innerHTML=ls.get('ps_req',[]).map((r,i)=>`<div class="ar"><span>₹${r.a}<br><small>UTR ${esc(r.u||'-')} · ${new Date(r.t).toLocaleString()}</small></span>${r.s==1?'<small>Approved</small>':r.s==2?'<small>Rejected</small>':`<span class="row" style="flex-wrap:nowrap"><button class="pri" data-ok="${i}">Approve</button><button data-no="${i}">Reject</button></span>`}</div>`).join('')||'Koi request nahi';
+ $('#aord').innerHTML=ls.get('ps_ord',[]).slice(0,20).map(o=>`<div class="ar"><span>${esc(o.n)} / ${esc(o.d)}<br><small>₹${o.p} · ${new Date(o.t).toLocaleString()}</small></span></div>`).join('')||'Koi order nahi';
+ mget('qr').then(q=>{$('#aq').innerHTML=q?`<img src="${q}" alt="QR">`:'QR set nahi hai'});
+ $('#upi').value=ls.get('ps_upi','')||UPI;stk();badge();
+ $('#alog').innerHTML=ls.get('ps_log',[]).slice(0,12).map(l=>`<div>${new Date(l.t).toLocaleTimeString()} · ${esc(l.m)}</div>`).join('')||'Koi log nahi'}
+$('#aqf').onchange=async e=>{const f=e.target.files[0];if(f){await mset('qr',await shrink(f,900));toast('QR save ho gaya');admin()}};
+$('#add').onclick=async()=>{
+ const n=$('#an').value.trim(),pl=[];
+ $('#ap').value.split('\n').forEach(l=>{const m=l.match(/^(.+?)\s*[=:]\s*₹?\s*([\d.]+)\s*$/);if(m)pl.push([m[1].trim(),parseFloat(m[2])])});
+ if(!n||!pl.length)return toast('Naam aur kam se kam 1 plan daalo (12 Hours = 49)');
+ const f=$('#af').files[0],id=Date.now(),p={id,n,d:$('#ad').value.trim(),pl,t:''};
+ if(f){if(f.type.startsWith('video/')){if(f.size>8e6)return toast('Video 8MB se chhoti rakho');p.t='v';await mset('p'+id,await rd(f))}
+  else{p.t='i';await mset('p'+id,await shrink(f,800))}}
+ P.unshift(p);ls.set('ps_prod',P);['#an','#ad','#ap','#af'].forEach(s=>$(s).value='');
+ toast('Product add ho gaya');shop();admin()};
+const stk=()=>{const st=ls.get('ps_stock',{}),v=$('#ks').value;$('#ks').innerHTML=P.flatMap(p=>p.pl.map(x=>{const k=p.id+'|'+x[0];return `<option value="${esc(k)}">${esc(p.n)} / ${esc(x[0])} (stock ${(st[k]||[]).length})</option>`})).join('');if(v)$('#ks').value=v};
+const addk=a=>{const k=$('#ks').value;if(!k)return;const st=ls.get('ps_stock',{});st[k]=(st[k]||[]).concat(a);ls.set('ps_stock',st);stk();toast(a.length+' keys add ho gayi')};
+$('#upis').onclick=()=>{ls.set('ps_upi',$('#upi').value.trim());toast('UPI ID save ho gayi')};
+$('#ka').onclick=()=>{const a=$('#kt').value.split('\n').map(s=>s.trim()).filter(Boolean);if(a.length){addk(a);$('#kt').value=''}};
+$('#kg').onclick=()=>addk(mk(10));
+$('#panel').onclick=e=>{const d=e.target.dataset;
+ if(d.del){P=P.filter(p=>p.id!=d.del);ls.set('ps_prod',P);mdel('p'+d.del);shop();admin()}
+ if(d.no!==undefined){const r=ls.get('ps_req',[]),q=r[d.no];if(q&&!q.s){q.s=2;ls.set('ps_req',r);logx('Rejected ₹'+q.a);admin()}}
+ if(d.ok!==undefined){const r=ls.get('ps_req',[]),q=r[d.ok];if(q&&!q.s){q.s=1;W+=q.a;logx('Approved ₹'+q.a);ls.set('ps_req',r);ls.set('ps_wal',W);bal();admin()}}};
+
+bal();shop();view();
+</script>
+</body>
+</html>
